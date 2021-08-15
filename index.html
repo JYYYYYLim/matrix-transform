@@ -1,5 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=1024">
+    <meta charset="utf-8">
+    <meta name="tags" content="css, matrix(), matrix, webdev, codegen">
+    <meta name="description" content="css matrix() visualizer">
+    <meta name="author" content="j5ylim">
+    <link rel= "stylesheet" href="../style.css">    
+</head>
+    
 <html>
-  <p>
-    placeholder
-  </p>
+<body>
+    
+    
+    
+    <div class="pagediv-item">
+        <div class="y-center panel">
+        <div class="header">matrix(2d)</div>        
+            <div class="modify-ctrl">
+
+                <div></div>
+                
+                <div class="slider-ctnr">
+                    <input type="range" min="0.000" max="2.000" step="0.001" value="1" class="slider" id="mtrx_1">
+                    <kbd><span id="mtrx_val_1"></span></kbd>
+                </div>
+                
+                <div class="slider-ctnr">
+                    <input type="range" min="-2" max="2" step="0.001" value="0" class="slider" id="mtrx_2">
+                    <kbd><span id="mtrx_val_2"></span></kbd>
+                </div>
+                
+                <div class="slider-ctnr">
+                    <input type="range" min="-2" max="2" step="0.001" value="0" class="slider" id="mtrx_3">
+                    <kbd><span id="mtrx_val_3"></span></kbd>
+                </div>
+                
+                <div class="slider-ctnr">
+                    <input type="range" min="0" max="2" step="0.001" value="1" class="slider" id="mtrx_4">
+                    <kbd><span id="mtrx_val_4"></span></kbd>
+                </div>
+                
+                <div class="slider-ctnr">
+                    <input type="range" min="0" max="1080" step="0.001" value="0" class="slider" id="mtrx_5">
+                    <kbd><span id="mtrx_val_5"></span></kbd>
+                </div>
+                
+                <div class="slider-ctnr">
+                    <input type="range" min="0" max="1080" step="0.001" value="0" class="slider" id="mtrx_6">
+                    <kbd><nl id="mtrx_val_6"></nl></kbd>
+                </div>
+
+                
+            </div>
+
+            <script>
+                const mtrx2d_vars = [];
+                for (var x=1; x<7; x++) {
+                    window["subject"+x] = document.getElementById("mtrx_"+[x])
+                    window["target"+x] = document.getElementById("mtrx_val_"+[x])
+                    window["target"+x].innerHTML = window["subject"+x].value;
+                    mtrx2d_vars.push(window["subject"+x].value)
+                }
+                subject1.oninput = function(){
+                    target1.innerHTML = subject1.value;
+                    mtrx2d_vars[0] = subject1.value
+                    console.log(mtrx2d_vars)
+                    setmtrx()
+                }
+                subject2.oninput = function(){
+                    target2.innerHTML = subject2.value;    
+                    mtrx2d_vars[1] = subject2.value
+                    setmtrx()
+                }
+                subject3.oninput = function(){
+                    target3.innerHTML = subject3.value;
+                    mtrx2d_vars[2] = subject3.value
+                    setmtrx()
+                }
+                subject4.oninput = function(){
+                    target4.innerHTML = subject4.value;
+                    mtrx2d_vars[3] = subject4.value
+                    setmtrx()
+                }
+                subject5.oninput = function(){
+                    target5.innerHTML = subject5.value;
+                    mtrx2d_vars[4] = subject5.value
+                    setmtrx()
+                }
+                subject6.oninput = function(){
+                    target6.innerHTML = subject6.value;
+                    mtrx2d_vars[5] = subject6.value
+                    setmtrx()
+                }
+                function setmtrx(){
+                    document.getElementById("preview-div").style.transform = "matrix("+mtrx2d_vars.join(', ')+")";
+                    console.log(mtrx2d_vars)
+                }
+            </script>
+            <div class="preview-ctnr">
+                output:
+                <div class="canvas">
+                <div class="preview-div" id="preview-div">test</div>
+                </div>
+            </div>        
+        </div>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <div class="pagediv-item">
+        <div class="y-center">
+            <div class="header">matrix3d()</div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+
+</body>        
 </html>
